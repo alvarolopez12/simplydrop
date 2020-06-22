@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <title>Dashboard-Simplydrop</title>
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <!-- Custom fonts for this template -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="static/css/sb-admin-2.min.css" rel="stylesheet">
+    <!-- Bootstrap core css -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.4.0/css/bootstrap4-toggle.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.4.0/js/bootstrap4-toggle.min.js"></script>
+    <!-- Bootstrap core JavaScript-->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
+    <!-- Librerias de tabla DataTables-->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/jq-3.3.1/jszip-2.5.0/dt-1.10.18/af-2.3.3/b-1.5.6/b-colvis-1.5.6/b-flash-1.5.6/b-html5-1.5.6/b-print-1.5.6/cr-1.5.0/fc-3.2.5/fh-3.1.4/kt-2.5.0/r-2.2.2/rg-1.1.0/rr-1.2.4/sc-2.0.0/sl-1.3.0/datatables.min.css" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jq-3.3.1/jszip-2.5.0/dt-1.10.18/af-2.3.3/b-1.5.6/b-colvis-1.5.6/b-flash-1.5.6/b-html5-1.5.6/b-print-1.5.6/cr-1.5.0/fc-3.2.5/fh-3.1.4/kt-2.5.0/r-2.2.2/rg-1.1.0/rr-1.2.4/sc-2.0.0/sl-1.3.0/datatables.min.js"></script>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
+
+<body id="page-top">
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+            <!-- Main Content -->
+            <div id="content">
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand-lg navbar-dark bg-primary ">
+                    <a class="navbar-brand" href="/index">
+                        <img src="static/img/favicon-32x32.png" width="30" height="30" class="d-inline-block align-top" alt=""> SimplyDrop
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <!-- Topbar Navbar -->
+                    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item ">
+                                <a class="nav-link" href="/index">
+                                    <i class="fas fa-fw fa-table"></i>
+                                    <span>Orders</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/notify-manager">
+                                    <i class="fas fa-fw fa-chart-area"></i>
+                                    <span>Notifications Options</span></a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="/carrier-manager">
+                                    <i class="fas fa-fw fa-chart-area"></i>
+                                    <span>Carriers Info</span></a>
+                            </li>
+                        </ul>
+                        <a class="navbar-brand" href="/shop">
+                            <img src="static/img/shopify-bag.png" width="30" height="30" class="d-inline-block align-top" alt="">
+                        </a>
+                    </div>
+                </nav>
+                <!-- End of Topbar -->
+                <!-- Begin Page Content -->
+                <div class="container-fluid pt-5">
+                    <div id="accordion">
+                        <div class="card">
+                            <div class="card-header" id="headingOne">
+                                <h5 class="mb-0">
+                              <div class="d-flex flex-column align-items-center" >
+                                 <div class="p-2">
+                                    <img id="mrw-logo" src="static/img/mrw-logo.png" width="280" height="80" class="rounded" alt="Italian Trulli" >
+                                 </div>
+
+
+
+                                 <div class="p-2">
+                                    <button class="btn btn-outline-primary" id="collapseButton" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                                    +Info
+                                    </button>
+
+
+
+
+                                    <a href="#"><input id="check-mrw" type="checkbox"  data-toggle="toggle" onchange="checkmrw(this)"/></a>
+
+                                 </div>
+                              </div>
+                           </h5>
+                            </div>
+                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                <div class="card-body">
+                                    <form name="mrwForm" action="/mrw-form" method="post" onsubmit="return checkmrwForm()">
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword1">MRW User</label>
+                                            <input name="mrwUser" type="user" class="form-control" id="mrwUser" placeholder={{mrwUserHint}}>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword1">MRW Password</label>
+                                            <input name="mrwPassword" type="password" class="form-control" id="mrwPassword" placeholder={{mrwpassword}}>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword1">Código de franquicia MRW</label>
+                                            <input name="codFran" type="text" class="form-control" id="codFran" placeholder={{codFranHint}}>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword1">Código de abonado MRW</label>
+                                            <input name="codAbon" type="text" class="form-control" id="codAbon" placeholder={{codAbonHint}}>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword1">Código de departamento MRW</label>
+                                            <input name="codDepa" type="text" class="form-control" id="codDepa" placeholder={{codDepaHint}}>
+                                        </div>
+                                        <div class="form-check">
+                                            <input name="check-form-mrw" type="checkbox" class="form-check-input" id="check-form-mrw">
+                                            <label class="form-check-label" for="check-form-mrw"><b>MRW currently only ships in Spanish national
+                                    territory.</b> This method does not allow the generation of International shipments. All shipments made in Spain, Portugal, Andorra and Gibraltar are considered domestic shipments.
+                                            </label>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingTwo">
+                                <h5 class="mb-0">
+                              <div class="d-flex flex-column align-items-center" >
+                                 <div class="p-2">
+                                    <img id="zeleris-logo" src="static/img/zeleris-logo.png" width="280" height="80" class="rounded" alt="Italian Trulli" >
+                                 </div>
+                                 <div class="p-2">
+                                    <button class="btn btn-outline-primary" id="collapseButton" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    +Info
+                                    </button>
+                                    <a href="#"><input id="check-zeleris" type="checkbox" data-toggle="toggle"></a>
+                                 </div>
+                              </div>
+                           </h5>
+                            </div>
+                            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                                <div class="card-body">
+                                    <div class="alert alert-success" role="alert">
+                                        <h4 class="alert-heading">Comming soon!</h4>
+                                        <p>We are working hard to connect SimplyDrop with Zeleris as soon as possible. Thank you very much for the wait :)</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingThree">
+                                <h5 class="mb-0">
+                              <div class="d-flex flex-column align-items-center" >
+                                 <div class="p-2">
+                                    <img id="dhl-logo" src="static/img/dhl-logo.png" width="280" height="80" class="rounded" alt="Italian Trulli" >
+                                 </div>
+                                 <div class="p-2">
+                                    <button class="btn btn-outline-primary" id="collapseButton" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                                    +Info
+                                    </button>
+                                    <a href="#"><input id="check-dhl"  type="checkbox" data-toggle="toggle" data-onstyle="primary" disabled></a>
+                                 </div>
+                              </div>
+                           </h5>
+                            </div>
+                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                                <div class="card-body">
+                                    <div class="alert alert-success" role="alert">
+                                        <h4 class="alert-heading">Comming soon!</h4>
+                                        <p>We are working hard to connect SimplyDrop with DHL as soon as possible. Thank you very much for the wait :)</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingFour">
+                                <h5 class="mb-0">
+                              <div class="d-flex flex-column align-items-center" >
+                                 <div class="p-2">
+                                    <img id="seur-logo" src="static/img/seur-logo.png" width="280" height="100" class="rounded" alt="Italian Trulli" >
+                                 </div>
+                                 <div class="p-2">
+                                    <button class="btn btn-outline-primary" id="collapseButton" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+                                    +Info
+                                    </button>
+                                   <a href="#"> <input id="check-seur"  type="checkbox" data-toggle="toggle" data-onstyle="primary" disabled></a>
+                                 </div>
+                              </div>
+                           </h5>
+                            </div>
+                            <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
+                                <div class="card-body">
+                                    <div class="alert alert-success" role="alert">
+                                        <h4 class="alert-heading">Comming soon!</h4>
+                                        <p>We are working hard to connect SimplyDrop with sSur as soon as possible. Thank you very much for the wait :)</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingFive">
+                                <h5 class="mb-0">
+                              <div class="d-flex flex-column align-items-center" >
+                                 <div class="p-2">
+                                    <img id="ups-logo" src="static/img/UPS-logo.png" width="280" height="200" class="rounded" alt="Italian Trulli" >
+                                 </div>
+                                 <div class="p-2">
+                                    <button class="btn btn-outline-primary" id="collapseButton" data-toggle="collapse" data-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+                                    +Info
+                                    </button>
+                                   <a href="#"> <input id="check-ups"  type="checkbox" data-toggle="toggle" data-onstyle="primary" disabled></a>
+                                 </div>
+                              </div>
+                           </h5>
+                            </div>
+                            <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordion">
+                                <div class="card-body">
+                                    <div class="alert alert-success" role="alert">
+                                        <h4 class="alert-heading">Comming soon!</h4>
+                                        <p>We are working hard to connect SimplyDrop with UPS as soon as possible. Thank you very much for the wait :)</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End of Main Content -->
+                <!-- Modal -->
+                <div id="myModal" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title"></h4>
+                            </div>
+                            <div class="modal-body">
+                                <p></p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Footer -->
+                <footer class="sticky-footer bg-white">
+                    <div class="container my-auto">
+                        <div class="copyright text-center my-auto">
+                            <span>Copyright &copy; SimplyDrop 2019</span>
+                        </div>
+                    </div>
+                </footer>
+                <!-- End of Footer -->
+            </div>
+            <!-- End of Content Wrapper -->
+        </div>
+    </div>
+    <!-- End of Page Wrapper -->
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="login.html">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function checkmrwForm() {
+            var user = document.forms["mrwForm"]["mrwUser"];
+            var password = document.forms["mrwForm"]["mrwPassword"];
+            var codFran = document.forms["mrwForm"]["codFran"];
+            var codAbon = document.forms["mrwForm"]["codAbon"];
+            var codDepa = document.forms["mrwForm"]["codDepa"];
+
+            if (user.value == "") {
+                window.alert("Please enter your mrw User.");
+                user.focus();
+                return false;
+            }
+
+            if (password.value == "") {
+                window.alert("Please enter your mrw Password.");
+                password.focus();
+                return false;
+            }
+            if (codFran.value == "") {
+                window.alert("Please enter your Código de franquicia MRW.");
+                user.focus();
+                return false;
+            }
+
+            if (codAbon.value == "") {
+                window.alert("Please enter your Código de abonado MRW.");
+                password.focus();
+                return false;
+            }
+            if (codDepa.value == "") {
+                window.alert("Please enter your Código de departamento MRW.");
+                password.focus();
+                return false;
+            }
+            if (!$('.#check-form-mrw').prop('checked')) {
+                alert('Accept terms before submit MRW info please');
+                return false;
+            }
+        }
+    </script>
+    <script>
+        function checkmrw(c) {
+
+            if (c.checked) {
+                $.ajax({
+                    type: "post",
+                    url: "checkbox-button-carrier",
+                    cache: false,
+                    data: {
+                        State: "on"
+                    },
+                    async: "asynchronous",
+                    success: function(html) {
+                        location.reload();
+                    }
+                });
+            } else {
+                $.ajax({
+                    type: "post",
+                    url: "checkbox-button-carrier",
+                    cache: false,
+                    data: {
+                        State: "off"
+                    },
+                    async: "asynchronous",
+                    success: function(html) {
+                        location.reload();
+                    }
+                });
+            }
+        }
+
+        document.getElementById("check-mrw").checked = {{check_mrw_state}};
+
+    </script>
+</body>
+
+</html>

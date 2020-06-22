@@ -1,0 +1,3 @@
+0 21 * * * python /Users/alvaro/PycharmProjects/SimplyDrop/simplydrop/scheduled_tasks/daily_summary.py
+0 9 * * 1 python /Users/alvaro/PycharmProjects/SimplyDrop/simplydrop/scheduled_tasks/weekly_summary.py
+0 9 1 * * python /Users/alvaro/PycharmProjects/SimplyDrop/simplydrop/scheduled_tasks/monthly_summary.py
